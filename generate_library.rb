@@ -22,6 +22,14 @@ end
 puts "Gallery title is [#{gallery_title}]."
 puts
 
+puts "What is the gallery slug?"
+gallery_slug = gets.chomp.strip
+if gallery_slug.empty?
+  abort "Gallery slug cannot be empty."
+end
+puts "Gallery slug is [#{gallery_slug}]."
+puts
+
 current_year = Date.today.strftime("%Y")
 
 puts "What is the gallery year? [#{current_year}]"
@@ -47,3 +55,4 @@ erb = ERB.new(template_file)
 File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
 
 puts "#{OUTPUT_FILE} written."
+
