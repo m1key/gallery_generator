@@ -1,4 +1,5 @@
 require 'date'
+require 'erb'
 
 puts "Gallery Generator"
 puts "www.m1key.me"
@@ -35,4 +36,12 @@ else
   end
 end
 puts "Gallery year is [#{gallery_year}]."
+puts 
 
+puts "Writing gallery file..."
+
+template_file = File.open("template.erb", 'r').read
+erb = ERB.new(template_file)
+File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
+
+puts "Written."
