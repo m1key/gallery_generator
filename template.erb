@@ -1,1 +1,78 @@
-The year is <%= gallery_year %>.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%= gallery_title %> - Photography - M1key - Michal Huniewicz</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="description" content="<%= gallery_title %> - Photography - M1key - Michal Huniewicz's Personal Website" />
+	<meta name="keywords" content="huniewicz, michal huniewicz, m1key, programming, java, scala, jee, photography, blog" />
+	<meta name="author" content="Michal Huniewicz" />
+	<style type="text/css" media="all">@import "../../styles/base.css";</style>
+	<link rel="shortcut icon" href="../../images/icon.ico" />
+	<link rel="alternate" type="application/atom+xml" title="blog.m1key.me - Atom" href="http://blog.m1key.me/feeds/posts/default" />
+	<link rel="alternate" type="application/rss+xml" title="blog.m1key.me - RSS" href="http://blog.m1key.me/feeds/posts/default?alt=rss" />
+	<script type="text/javascript" src="../../scripts/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../../scripts/photo-warning.js"></script>
+</head>
+<body>
+
+<div id="biggerContainer">
+	<div class="navigation">
+		<a href="../">&lt; Back to Photography</a><br />
+		<a href="../../">&lt; &lt; Back to M1key.me</a>
+	</div>
+
+	<h1><%= gallery_title %> Photography - M1key - Michal Huniewicz</h1>
+	<img src="mauritania_title.jpg" alt="<%= gallery_title %> by Michal Huniewicz" id="homepageImage" />
+	<div class="information">
+		<p>
+			TODO
+		</p>
+		<p class="smallprint">
+			<a name="sources">Sources</a>: <a href="https://www.gov.uk/foreign-travel-advice/mauritania">1</a>.
+			<br />
+			Uploaded on: <%= gallery_year %>-07-12.
+		</p>
+	</div>
+	<div class="map">
+		<a href="TODO">
+			<img src="mauritania_map.png" alt="TODO" title="TODO" /></a>
+	</div>
+	
+	<h2>Port de Pêche</h2>
+	<div class="photo">
+		<div class="title">
+			<a name="01" href="#01" title="Link to this photo"><strong>Port de Pêche</strong></a>
+		</div>
+		<div style="height: 850px" class="imageContainer">
+			<img src="mauritania_01.jpg" alt="Port de Pêche" />
+		</div>
+		<div class="description">
+			This is Port de Pêche, or Fishermen's Beach, in Nouakchott, the capital city of Mauritania. As you can imply from that name, Mauritania, land of of the Moors, is a former French colony.
+			As a colony, it was rather neglected and forgotten, contrary to other French colonies in that part of Africa. [<a href="#sources">3</a>]
+		</div>
+		<div class="technical">
+			ISO 200, 18mm, f/5.0, 1/320s.
+		</div>
+	</div>
+	
+	<div class="navigation">
+		<a href="../">&lt; Back to Photography</a><br />
+		<a href="../../">&lt; &lt; Back to M1key.me</a>
+	</div>
+	<div id="footer">
+		<hr />
+		<a href="http://www.m1key.me">M1key.me</a> -
+		<a href="http://blog.m1key.me">Blog</a> -
+		<a href="../../photography/">Photography</a> -
+		<a href="http://www.panoramio.com/user/2266392">Panoramio</a> -
+		<a href="http://nl.linkedin.com/in/michalhuniewicz">LinkedIn</a> -
+		<a href="https://www.facebook.com/Michal.Huniewicz">My Fan Page</a> -
+		<a href="../../about_me/">About me</a><br />
+		&copy;<%= gallery_year %> Michal Huniewicz, www.m1key.me
+	</div>
+</div>
+
+</body>
+</html>
+
