@@ -1,6 +1,8 @@
 require 'date'
 require 'erb'
 
+OUTPUT_FILE = "index.html"
+
 puts "Gallery Generator"
 puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
@@ -38,10 +40,10 @@ end
 puts "Gallery year is [#{gallery_year}]."
 puts 
 
-puts "Writing gallery file..."
+puts "Writing gallery file #{OUTPUT_FILE}..."
 
 template_file = File.open("template.erb", 'r').read
 erb = ERB.new(template_file)
 File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
 
-puts "Written."
+puts "#{OUTPUT_FILE} written."
