@@ -24,5 +24,9 @@ unless gallery_year_s.is_i?
 end
 gallery_year = Integer(gallery_year_s)
 
+unless gallery_year > 999 and gallery_year < 10000
+  abort "Gallery year should be four digits."
+end
+
 puts "Gallery year is [#{gallery_year}]."
 
