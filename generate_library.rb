@@ -1,5 +1,6 @@
 require 'date'
 require 'erb'
+require_relative 'photo'
 
 OUTPUT_FILE = "index.html"
 
@@ -47,6 +48,9 @@ else
 end
 puts "Gallery year is [#{gallery_year}]."
 puts 
+
+# TODO read actual values
+photos = [Photo.new("01", "Tashkent"), Photo.new("02", "Mosque in Bukhara"), Photo.new("03", "On a train to Samarqand")]
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 

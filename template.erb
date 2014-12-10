@@ -38,14 +38,15 @@
 		<a href="TODO">
 			<img src="<%= gallery_slug %>_map.png" alt="TODO" title="TODO" /></a>
 	</div>
-	
-	<h2>TODO</h2>
+
+	<% photos.each do |photo| %>
+	<h2><%= photo.title %></h2>
 	<div class="photo">
 		<div class="title">
-			<a name="01" href="#01" title="Link to this photo"><strong>TODO</strong></a>
+			<a name="<%= photo.id %>" href="#<%= photo.id %>" title="Link to this photo"><strong><%= photo.title %></strong></a>
 		</div>
 		<div style="height: 850px" class="imageContainer">
-			<img src="<%= gallery_slug %>_01.jpg" alt="TODO" />
+			<img src="<%= gallery_slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
 		</div>
 		<div class="description">
 			TODO. [<a href="#sources">1</a>]
@@ -54,6 +55,8 @@
 			ISO 200, 18mm, f/5.0, 1/320s.
 		</div>
 	</div>
+
+	<% end %>
 	
 	<div class="navigation">
 		<a href="../">&lt; Back to Photography</a><br />
