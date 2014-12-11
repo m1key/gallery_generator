@@ -43,7 +43,7 @@
 		<div class="title">
 			<a name="<%= photo.id %>" href="#<%= photo.id %>" title="Link to this photo"><strong><%= photo.title %></strong></a>
 		</div>
-		<div style="height: 850px" class="imageContainer">
+		<div style="height: <%= photo.metadata.height %>px" class="imageContainer">
 			<img src="<%= gallery_slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
 		</div>
 		<div class="description">

@@ -1,7 +1,9 @@
 require 'date'
 require 'erb'
 require 'yaml'
+require 'exifr'
 require_relative 'photo'
+require_relative 'metadata'
 
 OUTPUT_FILE = "index.html"
 GALLERY_CONFIG_FILE = "gallery.yaml"
@@ -69,6 +71,25 @@ def to_photo_id(current_photo_number, photo_id_digits)
   return photo_id
 end
 
+def get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
+  selected_file_name = ""
+  Dir.entries(".").each do |file_name|
+    if file_name.include? photo_file_name_contains.to_s
+      unless selected_file_name == ""
+        puts "WARN  More than one file name matches [#{photo_file_name_contains}]. Will use the last one that matches."
+      end
+      selected_file_name = file_name
+    end
+  end
+  if selected_file_name == ""
+    puts "WARN  No matching photo found for #{photo_file_name_contains}."
+    return
+  end
+  
+  photo_height = EXIFR::JPEG.new(selected_file_name).height
+  return Metadata.new(photo_height)
+end
+
 photos = []
 current_photo_number = 0
 total_photos_number = gallery_configuration["photos"].size
@@ -79,8 +100,10 @@ gallery_configuration["photos"].each do |photo|
   photo_id = to_photo_id(current_photo_number, photo_id_digits)
   photo_title = photo["title"]
   photo_description = photo["description"]
-  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], description [#{photo_description}]..."
-  photos.push Photo.new(photo_id, photo_title, photo_description)
+  photo_file_name_contains = photo["fileNameContains"]
+  photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
+  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{photo_description}]..."
+  photos.push Photo.new(photo_id, photo_title, photo_description, photo_metadata)
 end
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
