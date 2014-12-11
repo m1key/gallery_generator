@@ -23,16 +23,17 @@ end
 puts "Gallery title is [#{gallery_title}]."
 puts
 
-puts "What is the gallery slug?"
+current_directory = File.basename(Dir.getwd)
+default_slug = current_directory.downcase.tr(" ", "_")
+puts "What is the gallery slug? [#{default_slug}]"
 gallery_slug = gets.chomp.strip
 if gallery_slug.empty?
-  abort "Gallery slug cannot be empty."
+  gallery_slug = default_slug
 end
 puts "Gallery slug is [#{gallery_slug}]."
 puts
 
 current_year = Date.today.strftime("%Y")
-
 puts "What is the gallery year? [#{current_year}]"
 gallery_year_s = gets.chomp.strip
 if gallery_year_s.empty?
