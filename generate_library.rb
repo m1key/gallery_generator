@@ -24,6 +24,26 @@ map_title = gallery_configuration["map"]["title"]
 puts "Gallery map title is [#{map_title}]."
 gallery_slug = gallery_configuration["slug"]
 puts ["Gallery slug is [#{gallery_slug}]."]
+gallery_description = gallery_configuration["description"]
+puts ["Gallery description is [#{gallery_description}]."]
+
+def tabs(how_many_tabs)
+  tabs = ""
+  how_many_tabs.times do
+    tabs += "\t"
+  end
+  return tabs
+end
+
+def add_tabs_before_every_line(multi_line_string, how_many_tabs)
+  result = ""
+  multi_line_string.each_line do |line|
+    result += tabs(how_many_tabs) + line
+  end
+  return result
+end
+
+gallery_description = add_tabs_before_every_line(gallery_description, 2)
 
 gallery_year_from_yaml =  gallery_configuration["year"]
 if gallery_year_from_yaml == "current"
@@ -64,7 +84,7 @@ end
 puts "Writing gallery file #{OUTPUT_FILE}..."
 
 template_file = File.open("template.erb", 'r').read
-erb = ERB.new(template_file)
+erb = ERB.new(template_file, nil, '-')
 File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
 
 puts "#{OUTPUT_FILE} written."
