@@ -22,16 +22,8 @@ map_url = gallery_configuration["map"]["url"]
 puts "Gallery map url is [#{map_url}]."
 map_title = gallery_configuration["map"]["title"]
 puts "Gallery map title is [#{map_title}]."
-puts
-
-current_directory = File.basename(Dir.getwd)
-default_slug = current_directory.downcase.tr(" ", "_")
-puts "What is the gallery slug? [#{default_slug}]"
-gallery_slug = gets.chomp.strip
-if gallery_slug.empty?
-  gallery_slug = default_slug
-end
-puts "Gallery slug is [#{gallery_slug}]."
+gallery_slug = gallery_configuration["slug"]
+puts ["Gallery slug is [#{gallery_slug}]."]
 puts
 
 current_year = Date.today.strftime("%Y")
