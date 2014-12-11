@@ -23,9 +23,11 @@ puts "Gallery map url is [#{map_url}]."
 map_title = gallery_configuration["map"]["title"]
 puts "Gallery map title is [#{map_title}]."
 gallery_slug = gallery_configuration["slug"]
-puts ["Gallery slug is [#{gallery_slug}]."]
+puts "Gallery slug is [#{gallery_slug}]."
+gallery_upload_date = gallery_configuration["upload_date"]
+puts "Gallery upload date is [#{gallery_upload_date}]."
 gallery_description = gallery_configuration["description"]
-puts ["Gallery description is [#{gallery_description}]."]
+puts "Gallery description is [#{gallery_description}]."
 
 def tabs(how_many_tabs)
   tabs = ""
