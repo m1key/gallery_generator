@@ -2,6 +2,7 @@ require 'date'
 require 'erb'
 require 'yaml'
 require 'exifr'
+require 'fileutils'
 require_relative 'photo'
 require_relative 'metadata'
 
@@ -92,7 +93,11 @@ def get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   photo_focal_length = exif.focal_length.to_f.round.to_s
   photo_f_number = exif.f_number.to_f
   photo_exposure_time = exif.exposure_time.to_s
-  return Metadata.new(photo_height, photo_iso, photo_focal_length, photo_f_number, photo_exposure_time)
+  return Metadata.new(selected_file_name, photo_height, photo_iso, photo_focal_length, photo_f_number, photo_exposure_time)
+end
+
+def create_gallery_image(original_file_name, gallery_slug, photo_id)
+  FileUtils.cp(original_file_name, gallery_slug + "_" + photo_id + File.extname(original_file_name))
 end
 
 photos = []
@@ -107,8 +112,11 @@ gallery_configuration["photos"].each do |photo|
   photo_description = photo["description"]
   photo_file_name_contains = photo["fileNameContains"]
   photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
+  
   puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{photo_description}]..."
   photos.push Photo.new(photo_id, photo_title, photo_description, photo_metadata)
+  
+  create_gallery_image(photo_metadata.original_file_name, gallery_slug, photo_id)
 end
 
 puts "Writing gallery file #{OUTPUT_FILE}..."

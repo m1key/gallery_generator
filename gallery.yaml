@@ -16,10 +16,10 @@ upload_date: 2014-12-11
 photos:
         - title: Welcome to Tashkent!
           description: This is the first photo I took in Tashkent.
-          fileNameContains: 1234
+          fileNameContains: 5122
         - title: Night out in Bukhara
           description: Photo taken at night in Bukhara.
-          fileNameContains: 5122
+          fileNameContains: 1234
         - title: Samarkand
           description: Samarkand is amazing!
           fileNameContains: 8989
