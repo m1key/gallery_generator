@@ -1,7 +1,8 @@
 class Photo
-  attr_reader :id, :title
-  def initialize(id, title)
+  attr_reader :id, :title, :description
+  def initialize(id, title, description)
     @id = id
     @title = title
+    @description = description
   end
 end

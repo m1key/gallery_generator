@@ -56,8 +56,9 @@ gallery_configuration["photos"].each do |photo|
   current_photo_number += 1
   photo_id = to_photo_id(current_photo_number, photo_id_digits)
   photo_title = photo["title"]
-  puts "Adding photo with ID [#{photo_id}] and title [#{photo_title}]..."
-  photos.push Photo.new(photo_id, photo_title)
+  photo_description = photo["description"]
+  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], description [#{photo_description}]..."
+  photos.push Photo.new(photo_id, photo_title, photo_description)
 end
 
 puts "Writing gallery file #{OUTPUT_FILE}..."

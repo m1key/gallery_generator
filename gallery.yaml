@@ -7,6 +7,9 @@ map:
 
 photos:
         - title: Welcome to Tashkent!
+          description: This is the first photo I took in Tashkent.
         - title: Night out in Bukhara
+          description: Photo taken at night in Bukhara.
         - title: Samarkand
+          description: Samarkand is amazing!
 
