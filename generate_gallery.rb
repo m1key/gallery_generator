@@ -90,7 +90,8 @@ def get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   photo_iso = EXIFR::JPEG.new(selected_file_name).iso_speed_ratings
   photo_focal_length = EXIFR::JPEG.new(selected_file_name).focal_length.to_f.round.to_s
   photo_f_number = EXIFR::JPEG.new(selected_file_name).f_number.to_f
-  return Metadata.new(photo_height, photo_iso, photo_focal_length, photo_f_number)
+  photo_exposure_time = EXIFR::JPEG.new(selected_file_name).exposure_time.to_s
+  return Metadata.new(photo_height, photo_iso, photo_focal_length, photo_f_number, photo_exposure_time)
 end
 
 photos = []
