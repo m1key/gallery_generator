@@ -24,18 +24,14 @@ map_title = gallery_configuration["map"]["title"]
 puts "Gallery map title is [#{map_title}]."
 gallery_slug = gallery_configuration["slug"]
 puts ["Gallery slug is [#{gallery_slug}]."]
-puts
 
-current_year = Date.today.strftime("%Y")
-puts "What is the gallery year? [#{current_year}]"
-gallery_year_s = gets.chomp.strip
-if gallery_year_s.empty?
+gallery_year_from_yaml =  gallery_configuration["year"]
+if gallery_year_from_yaml == "current"
+  puts "Using current year for gallery year..."
+  current_year = Date.today.strftime("%Y")
   gallery_year = Integer(current_year)
 else
-  unless gallery_year_s.is_i?
-    abort "Gallery year needs to be a number."
-  end
-  gallery_year = Integer(gallery_year_s)
+  gallery_year = Integer(gallery_year_from_yaml)
   unless gallery_year > 999 and gallery_year < 10000
     abort "Gallery year should be exactly four digits long."
   end
