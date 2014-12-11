@@ -1,26 +1,27 @@
 require 'date'
 require 'erb'
+require 'yaml'
 require_relative 'photo'
 
 OUTPUT_FILE = "index.html"
+GALLERY_CONFIG_FILE = "gallery.yaml"
 
 puts "Gallery Generator"
 puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
 
-puts "What is the gallery title?"
-gallery_title = gets.chomp.strip
-if gallery_title.empty? 
-  abort "Gallery title cannot be empty."
-end
+puts "Attempting to parse #{GALLERY_CONFIG_FILE} to read gallery configuration..."
+gallery_configuration = YAML.load_file(GALLERY_CONFIG_FILE)
+puts "Parsed, seemingly."
+puts
 
-class String
-  def is_i?
-    Integer(self) != nil rescue false
-  end
-end
+gallery_title = gallery_configuration["title"]
 puts "Gallery title is [#{gallery_title}]."
+map_url = gallery_configuration["map"]["url"]
+puts "Gallery map url is [#{map_url}]."
+map_title = gallery_configuration["map"]["title"]
+puts "Gallery map title is [#{map_title}]."
 puts
 
 current_directory = File.basename(Dir.getwd)
