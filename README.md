@@ -13,4 +13,11 @@ This is work in progress.
 
 ## Example usage
 
-TODO
+ruby generate_gallery.rb
+
+This assumes there is a valid gallery.yaml file present in the current folder,
+and the photos themselves in the format DSC_1234.jpg.
+
+Before running, install the necessary gems:
+> gem install exifr
+
