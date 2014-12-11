@@ -87,7 +87,8 @@ def get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   end
   
   photo_height = EXIFR::JPEG.new(selected_file_name).height
-  return Metadata.new(photo_height)
+  photo_iso = EXIFR::JPEG.new(selected_file_name).iso_speed_ratings
+  return Metadata.new(photo_height, photo_iso)
 end
 
 photos = []
