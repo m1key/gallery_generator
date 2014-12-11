@@ -19,9 +19,9 @@ puts
 gallery_title = gallery_configuration["title"]
 puts "Gallery title is [#{gallery_title}]."
 map_url = gallery_configuration["map"]["url"]
-puts "Gallery map url is [#{map_url}]."
+puts "Map url is [#{map_url}]."
 map_title = gallery_configuration["map"]["title"]
-puts "Gallery map title is [#{map_title}]."
+puts "Map title is [#{map_title}]."
 gallery_slug = gallery_configuration["slug"]
 puts "Gallery slug is [#{gallery_slug}]."
 gallery_upload_date = gallery_configuration["upload_date"]
