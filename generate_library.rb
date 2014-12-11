@@ -39,8 +39,26 @@ end
 puts "Gallery year is [#{gallery_year}]."
 puts 
 
-# TODO read actual values
-photos = [Photo.new("01", "Tashkent"), Photo.new("02", "Mosque in Bukhara"), Photo.new("03", "On a train to Samarqand")]
+def to_photo_id(current_photo_number, photo_id_digits)
+  photo_id = "#{current_photo_number}"
+  while photo_id.size < photo_id_digits
+    photo_id = "0" + photo_id
+  end
+  return photo_id
+end
+
+photos = []
+current_photo_number = 0
+total_photos_number = gallery_configuration["photos"].size
+photo_id_digits = Math::log10(total_photos_number) + 1 
+puts "There are [#{total_photos_number}] photos total."
+gallery_configuration["photos"].each do |photo|
+  current_photo_number += 1
+  photo_id = to_photo_id(current_photo_number, photo_id_digits)
+  photo_title = photo["title"]
+  puts "Adding photo with ID [#{photo_id}] and title [#{photo_title}]..."
+  photos.push Photo.new(photo_id, photo_title)
+end
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 
