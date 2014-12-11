@@ -50,7 +50,7 @@
 			<%= photo.description %>
 		</div>
 		<div class="technical">
-			ISO <%= photo.metadata.iso %>, <%= photo.metadata.focal_length %>mm, f/5.0, 1/320s.
+			ISO <%= photo.metadata.iso %>, <%= photo.metadata.focal_length %>mm, f/<%= photo.metadata.f_number %>, 1/320s.
 		</div>
 	</div>
 	<% end %>
