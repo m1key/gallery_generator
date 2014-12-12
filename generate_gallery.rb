@@ -117,6 +117,15 @@ def remove_final_empty_line(multi_line_string)
   return result
 end
 
+def add_links_to_sources(multi_line_string)
+  result = ""
+  multi_line_string.each_line do |line|
+    line_with_empty_line_removed =  line.gsub(/\[(\d)\]/, '[<a href="#sources">\1</a>]')
+    result += line_with_empty_line_removed
+  end
+  return result
+end
+
 photos = []
 current_photo_number = 0
 total_photos_number = gallery_configuration["photos"].size
@@ -126,7 +135,7 @@ gallery_configuration["photos"].each do |photo|
   current_photo_number += 1
   photo_id = to_photo_id(current_photo_number, photo_id_digits)
   photo_title = photo["title"]
-  photo_description = remove_final_empty_line(add_tabs_before_every_line(photo["description"], 3))
+  photo_description = add_links_to_sources(remove_final_empty_line(add_tabs_before_every_line(photo["description"], 3)))
   photo_file_name_contains = photo["fileNameContains"]
   photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   
