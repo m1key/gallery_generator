@@ -102,6 +102,21 @@ def create_gallery_image(original_file_name, gallery_slug, photo_id)
   FileUtils.cp(original_file_name, gallery_slug + "_" + photo_id + File.extname(original_file_name))
 end
 
+def remove_final_empty_line(multi_line_string)
+  result = ""
+  index = 1
+  multi_line_string.each_line do |line|
+    if index == multi_line_string.lines.count 
+      line_with_empty_line_removed =  line.sub(/[\r\n|\r|\n]$/, '')
+      result += line_with_empty_line_removed
+    else
+      result += line
+    end 
+    index += 1
+  end
+  return result
+end
+
 photos = []
 current_photo_number = 0
 total_photos_number = gallery_configuration["photos"].size
@@ -111,11 +126,11 @@ gallery_configuration["photos"].each do |photo|
   current_photo_number += 1
   photo_id = to_photo_id(current_photo_number, photo_id_digits)
   photo_title = photo["title"]
-  photo_description = photo["description"]
+  photo_description = remove_final_empty_line(add_tabs_before_every_line(photo["description"], 3))
   photo_file_name_contains = photo["fileNameContains"]
   photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   
-  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{photo_description}]..."
+  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{photo["description"]}]..."
   photos.push Photo.new(photo_id, photo_title, photo_description, photo_metadata)
   
   create_gallery_image(photo_metadata.original_file_name, gallery_slug, photo_id)

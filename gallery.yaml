@@ -20,7 +20,9 @@ sources:
 
 photos:
         - title: Welcome to Tashkent!
-          description: This is the first photo I took in Tashkent.
+          description: |
+                This is the first photo I took in Tashkent.
+                Tashkent is amazing.
           fileNameContains: 5122
         - title: Night out in Bukhara
           description: Photo taken at night in Bukhara.
