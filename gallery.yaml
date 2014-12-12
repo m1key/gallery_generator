@@ -13,6 +13,11 @@ description: |
         </p>
 upload_date: 2014-12-11
 
+sources:
+        - https://en.wikipedia.org/wiki/Uzbekistan
+        - https://en.wikipedia.org/wiki/Tashkent
+        - https://en.wikipedia.org/wiki/Samarkand
+
 photos:
         - title: Welcome to Tashkent!
           description: This is the first photo I took in Tashkent.

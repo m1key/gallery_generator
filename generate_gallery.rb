@@ -32,6 +32,8 @@ puts "Gallery upload date is [#{gallery_upload_date}]."
 gallery_description = gallery_configuration["description"]
 puts "Gallery description is [#{gallery_description}]."
 
+gallery_sources = gallery_configuration["sources"]
+
 def tabs(how_many_tabs)
   tabs = ""
   how_many_tabs.times do

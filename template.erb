@@ -27,7 +27,9 @@
 	<div class="information">
 <%= gallery_description -%>
 		<p class="smallprint">
-			<a name="sources">Sources</a>: <a href="TODO">1</a>.
+			<a name="sources">Sources</a>:<% gallery_sources.each_with_index do |source, index| %>
+			<a href="<%= source %>"><%= index + 1 %></a><% if (index + 1) < gallery_sources.size %>,<% else %>.<% end -%>
+			<% end %>
 			<br />
 			Uploaded on: <%= gallery_upload_date %>.
 		</p>
