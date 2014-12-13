@@ -5,6 +5,8 @@ require 'exifr'
 require 'fileutils'
 require_relative 'photo'
 require_relative 'metadata'
+require_relative 'console_utils'
+require_relative 'string_utils'
 
 OUTPUT_FILE = "index.html"
 GALLERY_CONFIG_FILE = "gallery.yaml"
@@ -18,10 +20,6 @@ puts "Attempting to parse #{GALLERY_CONFIG_FILE} to read gallery configuration..
 gallery_configuration = YAML.load_file(GALLERY_CONFIG_FILE)
 puts "Parsed, seemingly."
 puts
-
-def compact(multi_line_string)
-  return multi_line_string.delete("\t").delete("\r").delete("\n").squeeze(" ")
-end
 
 gallery_title = gallery_configuration["title"]
 puts "Gallery title is [#{gallery_title}]."
@@ -37,22 +35,6 @@ gallery_description = gallery_configuration["description"]
 puts "Gallery description is [#{compact(gallery_description)}]."
 
 gallery_sources = gallery_configuration["sources"]
-
-def tabs(how_many_tabs)
-  tabs = ""
-  how_many_tabs.times do
-    tabs += "\t"
-  end
-  return tabs
-end
-
-def add_tabs_before_every_line(multi_line_string, how_many_tabs)
-  result = ""
-  multi_line_string.each_line do |line|
-    result += tabs(how_many_tabs) + line
-  end
-  return result
-end
 
 gallery_description = add_tabs_before_every_line(gallery_description, 2)
 
