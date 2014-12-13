@@ -14,3 +14,18 @@ def add_tabs_before_every_line(multi_line_string, how_many_tabs)
   return result
 end
 
+def remove_final_empty_line(multi_line_string)
+  result = ""
+  index = 1
+  multi_line_string.each_line do |line|
+    if index == multi_line_string.lines.count
+      line_with_empty_line_removed =  line.sub(/[\r\n|\r|\n]$/, '')
+      result += line_with_empty_line_removed
+    else
+      result += line
+    end
+    index += 1
+  end
+  return result
+end
+
