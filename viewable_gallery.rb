@@ -2,7 +2,7 @@ require_relative 'string_utils'
 
 class ViewableGallery
   attr_reader :title, :description, :slug, :sources, :upload_date, :map_url, :map_title, :year, :photos
-  def initialize(title, description, slug, sources, upload_date, map_url, map_title, year, photos)
+  def initialize(title, description, slug, sources, upload_date, map_url, map_title, year, viewable_photos)
     @title = title
     @description = description
     @slug = slug
@@ -11,7 +11,7 @@ class ViewableGallery
     @map_url = map_url
     @map_title = map_title
     @year = year
-    @photos = photos
+    @photos = viewable_photos
   end
 
   def get_binding

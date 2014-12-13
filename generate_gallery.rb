@@ -4,9 +4,8 @@ require 'yaml'
 require 'exifr'
 require 'fileutils'
 require_relative 'viewable_gallery'
+require_relative 'viewable_photo'
 require_relative 'gallery_config'
-require_relative 'photo'
-require_relative 'metadata'
 require_relative 'console_utils'
 require_relative 'string_utils'
 require_relative 'photos_utils'
@@ -25,10 +24,10 @@ add_tabs_before_every_description_line = lambda do |mutable_viewable_gallery|
 end
 
 gallery_config = GalleryConfig.new(GALLERY_CONFIG_FILE)
-photos_info = load_photos_info(gallery_config)
+viewable_photos = photos_config_into_viewable_photos(gallery_config)
 gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, gallery_config.slug, \
   gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
-  gallery_config.year, photos_info).update_using(&add_tabs_before_every_description_line)
+  gallery_config.year, viewable_photos).update_using(&add_tabs_before_every_description_line)
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read

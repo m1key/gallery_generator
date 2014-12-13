@@ -1,4 +1,4 @@
-class Metadata
+class ViewablePhotoMetadata
   attr_reader :original_file_name, :height, :iso, :focal_length, :f_number, :exposure_time
   def initialize(original_file_name, height, iso, focal_length, f_number, exposure_time)
     @original_file_name = original_file_name
