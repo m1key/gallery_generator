@@ -19,9 +19,16 @@ puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
 
+add_tabs_before_every_description_line = lambda do |mutable_viewable_gallery|
+  mutable_viewable_gallery.description = add_tabs_before_every_line(mutable_viewable_gallery.description, 2)
+  return mutable_viewable_gallery
+end
+
 gallery_config = GalleryConfig.new(GALLERY_CONFIG_FILE)
 photos_info = load_photos_info(gallery_config)
-gallery = ViewableGallery.new(gallery_config, photos_info)
+gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, gallery_config.slug, \
+  gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
+  gallery_config.year, photos_info).update_using(&add_tabs_before_every_description_line)
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read
