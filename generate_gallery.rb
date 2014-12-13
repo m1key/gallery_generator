@@ -3,6 +3,7 @@ require 'erb'
 require 'yaml'
 require 'exifr'
 require 'fileutils'
+require_relative 'gallery'
 require_relative 'photo'
 require_relative 'metadata'
 require_relative 'console_utils'
@@ -51,6 +52,8 @@ else
 end
 puts "Gallery year is [#{gallery_year}]."
 puts 
+
+gallery = Gallery.new(gallery_title)
 
 def to_photo_id(current_photo_number, photo_id_digits)
   photo_id = "#{current_photo_number}"

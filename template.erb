@@ -2,9 +2,9 @@
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><%= gallery_title %> - Photography - M1key - Michal Huniewicz</title>
+<title><%= gallery.title %> - Photography - M1key - Michal Huniewicz</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="description" content="<%= gallery_title %> - Photography - M1key - Michal Huniewicz's Personal Website" />
+	<meta name="description" content="<%= gallery.title %> - Photography - M1key - Michal Huniewicz's Personal Website" />
 	<meta name="keywords" content="huniewicz, michal huniewicz, m1key, programming, java, scala, jee, photography, blog" />
 	<meta name="author" content="Michal Huniewicz" />
 	<style type="text/css" media="all">@import "../../styles/base.css";</style>
@@ -22,8 +22,8 @@
 		<a href="../../">&lt; &lt; Back to M1key.me</a>
 	</div>
 
-	<h1><%= gallery_title %> Photography - M1key - Michal Huniewicz</h1>
-	<img src="<%= gallery_slug %>_title.jpg" alt="<%= gallery_title %> by Michal Huniewicz" id="homepageImage" />
+	<h1><%= gallery.title %> Photography - M1key - Michal Huniewicz</h1>
+	<img src="<%= gallery_slug %>_title.jpg" alt="<%= gallery.title %> by Michal Huniewicz" id="homepageImage" />
 	<div class="information">
 <%= gallery_description -%>
 		<p class="smallprint">
