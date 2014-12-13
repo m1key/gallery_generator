@@ -19,6 +19,10 @@ gallery_configuration = YAML.load_file(GALLERY_CONFIG_FILE)
 puts "Parsed, seemingly."
 puts
 
+def compact(multi_line_string)
+  return multi_line_string.delete("\t").delete("\r").delete("\n").squeeze(" ")
+end
+
 gallery_title = gallery_configuration["title"]
 puts "Gallery title is [#{gallery_title}]."
 map_url = gallery_configuration["map"]["url"]
@@ -30,7 +34,7 @@ puts "Gallery slug is [#{gallery_slug}]."
 gallery_upload_date = gallery_configuration["upload_date"]
 puts "Gallery upload date is [#{gallery_upload_date}]."
 gallery_description = gallery_configuration["description"]
-puts "Gallery description is [#{gallery_description}]."
+puts "Gallery description is [#{compact(gallery_description)}]."
 
 gallery_sources = gallery_configuration["sources"]
 
@@ -139,7 +143,7 @@ gallery_configuration["photos"].each do |photo|
   photo_file_name_contains = photo["fileNameContains"]
   photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
   
-  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{photo["description"]}]..."
+  puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{compact(photo["description"])}]..."
   photos.push Photo.new(photo_id, photo_title, photo_description, photo_metadata)
   
   create_gallery_image(photo_metadata.original_file_name, gallery_slug, photo_id)
