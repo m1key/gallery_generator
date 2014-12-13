@@ -26,7 +26,7 @@ gallery = ViewableGallery.new(gallery_config, photos_info)
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read
 erb = ERB.new(template_file, nil, '-')
-File.open("index.html", 'w+') { |file| file.write(erb.result(binding)) }
+File.open("index.html", 'w+') { |file| file.write(erb.result(gallery.get_binding)) }
 
 puts "#{OUTPUT_FILE} written."
 

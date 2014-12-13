@@ -2,9 +2,9 @@
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><%= gallery.title %> - Photography - M1key - Michal Huniewicz</title>
+<title><%= title %> - Photography - M1key - Michal Huniewicz</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="description" content="<%= gallery.title %> - Photography - M1key - Michal Huniewicz's Personal Website" />
+	<meta name="description" content="<%= title %> - Photography - M1key - Michal Huniewicz's Personal Website" />
 	<meta name="keywords" content="huniewicz, michal huniewicz, m1key, programming, java, scala, jee, photography, blog" />
 	<meta name="author" content="Michal Huniewicz" />
 	<style type="text/css" media="all">@import "../../styles/base.css";</style>
@@ -22,31 +22,31 @@
 		<a href="../../">&lt; &lt; Back to M1key.me</a>
 	</div>
 
-	<h1><%= gallery.title %> Photography - M1key - Michal Huniewicz</h1>
-	<img src="<%= gallery.slug %>_title.jpg" alt="<%= gallery.title %> by Michal Huniewicz" id="homepageImage" />
+	<h1><%= title %> Photography - M1key - Michal Huniewicz</h1>
+	<img src="<%= slug %>_title.jpg" alt="<%= title %> by Michal Huniewicz" id="homepageImage" />
 	<div class="information">
-<%= gallery.description -%>
+<%= description -%>
 		<p class="smallprint">
-			<a name="sources">Sources</a>:<% gallery.sources.each_with_index do |source, index| %>
-			<a href="<%= source %>"><%= index + 1 %></a><% if (index + 1) < gallery.sources.size %>,<% else %>.<% end -%>
+			<a name="sources">Sources</a>:<% sources.each_with_index do |source, index| %>
+			<a href="<%= source %>"><%= index + 1 %></a><% if (index + 1) < sources.size %>,<% else %>.<% end -%>
 			<% end %>
 			<br />
-			Uploaded on: <%= gallery.upload_date %>.
+			Uploaded on: <%= upload_date %>.
 		</p>
 	</div>
 	<div class="map">
-		<a href="<%= gallery.map_url %>">
-			<img src="<%= gallery.slug %>_map.png" alt="<%= gallery.map_title %>" title="<%= gallery.map_title %>" /></a>
+		<a href="<%= map_url %>">
+			<img src="<%= slug %>_map.png" alt="<%= map_title %>" title="<%= map_title %>" /></a>
 	</div>
 
-	<% gallery.photos.each do |photo| %>
+	<% photos.each do |photo| %>
 	<h2><%= photo.title %></h2>
 	<div class="photo">
 		<div class="title">
 			<a name="<%= photo.id %>" href="#<%= photo.id %>" title="Link to this photo"><strong><%= photo.title %></strong></a>
 		</div>
 		<div style="height: <%= photo.metadata.height %>px" class="imageContainer">
-			<img src="<%= gallery.slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
+			<img src="<%= slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
 		</div>
 		<div class="description">
 <%= photo.description %>
@@ -70,7 +70,7 @@
 		<a href="http://nl.linkedin.com/in/michalhuniewicz">LinkedIn</a> -
 		<a href="https://www.facebook.com/Michal.Huniewicz">My Fan Page</a> -
 		<a href="../../about_me/">About me</a><br />
-		&copy;<%= gallery.year %> Michal Huniewicz, www.m1key.me
+		&copy;<%= year %> Michal Huniewicz, www.m1key.me
 	</div>
 </div>
 

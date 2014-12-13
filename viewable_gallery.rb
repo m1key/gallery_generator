@@ -13,4 +13,8 @@ class ViewableGallery
     @year = gallery_config.year
     @photos = photos
   end
+
+  def get_binding
+    binding()
+  end
 end
