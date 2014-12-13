@@ -23,20 +23,20 @@
 	</div>
 
 	<h1><%= gallery.title %> Photography - M1key - Michal Huniewicz</h1>
-	<img src="<%= gallery_slug %>_title.jpg" alt="<%= gallery.title %> by Michal Huniewicz" id="homepageImage" />
+	<img src="<%= gallery.slug %>_title.jpg" alt="<%= gallery.title %> by Michal Huniewicz" id="homepageImage" />
 	<div class="information">
-<%= gallery_description -%>
+<%= gallery.description -%>
 		<p class="smallprint">
-			<a name="sources">Sources</a>:<% gallery_sources.each_with_index do |source, index| %>
-			<a href="<%= source %>"><%= index + 1 %></a><% if (index + 1) < gallery_sources.size %>,<% else %>.<% end -%>
+			<a name="sources">Sources</a>:<% gallery.sources.each_with_index do |source, index| %>
+			<a href="<%= source %>"><%= index + 1 %></a><% if (index + 1) < gallery.sources.size %>,<% else %>.<% end -%>
 			<% end %>
 			<br />
-			Uploaded on: <%= gallery_upload_date %>.
+			Uploaded on: <%= gallery.upload_date %>.
 		</p>
 	</div>
 	<div class="map">
-		<a href="<%= map_url %>">
-			<img src="<%= gallery_slug %>_map.png" alt="<%= map_title %>" title="<%= map_title %>" /></a>
+		<a href="<%= gallery.map_url %>">
+			<img src="<%= gallery.slug %>_map.png" alt="<%= gallery.map_title %>" title="<%= gallery.map_title %>" /></a>
 	</div>
 
 	<% photos.each do |photo| %>
@@ -46,7 +46,7 @@
 			<a name="<%= photo.id %>" href="#<%= photo.id %>" title="Link to this photo"><strong><%= photo.title %></strong></a>
 		</div>
 		<div style="height: <%= photo.metadata.height %>px" class="imageContainer">
-			<img src="<%= gallery_slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
+			<img src="<%= gallery.slug %>_<%= photo.id %>.jpg" alt="<%= photo.title %>"< />
 		</div>
 		<div class="description">
 <%= photo.description %>
@@ -70,7 +70,7 @@
 		<a href="http://nl.linkedin.com/in/michalhuniewicz">LinkedIn</a> -
 		<a href="https://www.facebook.com/Michal.Huniewicz">My Fan Page</a> -
 		<a href="../../about_me/">About me</a><br />
-		&copy;<%= gallery_year %> Michal Huniewicz, www.m1key.me
+		&copy;<%= gallery.year %> Michal Huniewicz, www.m1key.me
 	</div>
 </div>
 

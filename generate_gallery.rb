@@ -4,6 +4,7 @@ require 'yaml'
 require 'exifr'
 require 'fileutils'
 require_relative 'viewable_gallery'
+require_relative 'gallery_config'
 require_relative 'photo'
 require_relative 'metadata'
 require_relative 'console_utils'
@@ -17,43 +18,8 @@ puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
 
-puts "Attempting to parse #{GALLERY_CONFIG_FILE} to read gallery configuration..."
-gallery_configuration = YAML.load_file(GALLERY_CONFIG_FILE)
-puts "Parsed, seemingly."
-puts
-
-gallery_title = gallery_configuration["title"]
-puts "Gallery title is [#{gallery_title}]."
-map_url = gallery_configuration["map"]["url"]
-puts "Map url is [#{map_url}]."
-map_title = gallery_configuration["map"]["title"]
-puts "Map title is [#{map_title}]."
-gallery_slug = gallery_configuration["slug"]
-puts "Gallery slug is [#{gallery_slug}]."
-gallery_upload_date = gallery_configuration["upload_date"]
-puts "Gallery upload date is [#{gallery_upload_date}]."
-gallery_description = gallery_configuration["description"]
-puts "Gallery description is [#{compact(gallery_description)}]."
-
-gallery_sources = gallery_configuration["sources"]
-
-gallery_description = add_tabs_before_every_line(gallery_description, 2)
-
-gallery_year_from_yaml =  gallery_configuration["year"]
-if gallery_year_from_yaml == "current"
-  puts "Using current year for gallery year..."
-  current_year = Date.today.strftime("%Y")
-  gallery_year = Integer(current_year)
-else
-  gallery_year = Integer(gallery_year_from_yaml)
-  unless gallery_year > 999 and gallery_year < 10000
-    abort "Gallery year should be exactly four digits long."
-  end
-end
-puts "Gallery year is [#{gallery_year}]."
-puts 
-
-gallery = ViewableGallery.new(gallery_title)
+gallery_config = GalleryConfig.new(GALLERY_CONFIG_FILE)
+gallery = ViewableGallery.new(gallery_config)
 
 def to_photo_id(current_photo_number, photo_id_digits)
   photo_id = "#{current_photo_number}"
@@ -102,10 +68,10 @@ end
 
 photos = []
 current_photo_number = 0
-total_photos_number = gallery_configuration["photos"].size
-photo_id_digits = Math::log10(total_photos_number) + 1 
+total_photos_number = gallery_config.total_photos_number
+photo_id_digits = gallery_config.photo_id_digits 
 puts "There are [#{total_photos_number}] photos total."
-gallery_configuration["photos"].each do |photo|
+gallery_config.photos.each do |photo|
   current_photo_number += 1
   photo_id = to_photo_id(current_photo_number, photo_id_digits)
   photo_title = photo["title"]
@@ -116,7 +82,7 @@ gallery_configuration["photos"].each do |photo|
   puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{compact(photo["description"])}]..."
   photos.push Photo.new(photo_id, photo_title, photo_description, photo_metadata)
   
-  create_gallery_image(photo_metadata.original_file_name, gallery_slug, photo_id)
+  create_gallery_image(photo_metadata.original_file_name, gallery.slug, photo_id)
 end
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
