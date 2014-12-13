@@ -39,7 +39,7 @@
 			<img src="<%= gallery.slug %>_map.png" alt="<%= gallery.map_title %>" title="<%= gallery.map_title %>" /></a>
 	</div>
 
-	<% photos.each do |photo| %>
+	<% gallery.photos.each do |photo| %>
 	<h2><%= photo.title %></h2>
 	<div class="photo">
 		<div class="title">
