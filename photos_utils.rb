@@ -10,7 +10,7 @@ def photos_config_into_viewable_photos(gallery_config)
     current_photo_number += 1
     photo_id = to_photo_id(current_photo_number, photo_id_digits)
     photo_title = photo["title"]
-    photo_description = add_links_to_sources(remove_final_empty_line(add_tabs_before_every_line(photo["description"], 3)))
+    photo_description = photo["description"]
     photo_file_name_contains = photo["fileNameContains"]
     photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
 

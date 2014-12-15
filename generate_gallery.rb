@@ -23,11 +23,28 @@ add_tabs_before_every_description_line = lambda do |mutable_viewable_gallery|
   return mutable_viewable_gallery
 end
 
+add_tabs_before_every_photo_description_line = lambda do |mutable_viewable_gallery|
+  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
+    mutable_viewable_photo.description = add_tabs_before_every_line(mutable_viewable_photo.description, 3)
+  end
+  return mutable_viewable_gallery
+end
+
+add_links_to_photo_descriptions = lambda do |mutable_viewable_gallery|
+  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
+    mutable_viewable_photo.description = add_links_to_sources(mutable_viewable_photo.description)
+  end
+  return mutable_viewable_gallery
+end
+
 gallery_config = GalleryConfig.new(GALLERY_CONFIG_FILE)
 viewable_photos = photos_config_into_viewable_photos(gallery_config)
 gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, gallery_config.slug, \
   gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
-  gallery_config.year, viewable_photos).update_using(&add_tabs_before_every_description_line)
+  gallery_config.year, viewable_photos).
+  update_using(&add_tabs_before_every_description_line).
+  update_using(&add_tabs_before_every_photo_description_line).
+  update_using(&add_links_to_photo_descriptions)
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read
