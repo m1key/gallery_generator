@@ -18,11 +18,16 @@ class ViewableGallery
     binding()
   end
 
-  def update_using(&update_function)
-    updated_gallery = update_function.call(MutableViewableGallery.new(self))
+  def update_using(*args)
+    updated_gallery = MutableViewableGallery.new(self)
+
+    args.each do |update_function|
+      updated_gallery = update_function.call(updated_gallery)
+    end
+
     return ViewableGallery.new(updated_gallery.title, updated_gallery.description, updated_gallery.slug, \
-      updated_gallery.sources, updated_gallery.upload_date, updated_gallery.map_url, \
-      updated_gallery.map_title, updated_gallery.year, to_viewable_photos(updated_gallery.photos))
+        updated_gallery.sources, updated_gallery.upload_date, updated_gallery.map_url, \
+        updated_gallery.map_title, updated_gallery.year, to_viewable_photos(updated_gallery.photos))
   end
 
   def to_viewable_photos(mutable_viewable_photos)

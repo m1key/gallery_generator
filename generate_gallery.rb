@@ -33,11 +33,19 @@ add_links_to_photo_descriptions = lambda do |mutable_viewable_gallery|
   return mutable_viewable_gallery
 end
 
+remove_final_empty_line_from_photo_descriptions = lambda do |mutable_viewable_gallery|
+  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
+    mutable_viewable_photo.description = remove_final_empty_line(mutable_viewable_photo.description)
+  end
+  return mutable_viewable_gallery
+
+end
+
 def add_links_to_sources(multi_line_string)
   result = ""
   multi_line_string.each_line do |line|
-    line_with_empty_line_removed =  line.gsub(/\[(\d)\]/, '[<a href="#sources">\1</a>]')
-    result += line_with_empty_line_removed
+    line_with_source_link_added =  line.gsub(/\[(\d)\]/, '[<a href="#sources">\1</a>]')
+    result += line_with_source_link_added
   end
   return result
 end
@@ -47,9 +55,11 @@ viewable_photos = photos_config_into_viewable_photos(gallery_config)
 gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, gallery_config.slug, \
   gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
   gallery_config.year, viewable_photos).
-  update_using(&add_tabs_before_every_description_line).
-  update_using(&add_tabs_before_every_photo_description_line).
-  update_using(&add_links_to_photo_descriptions)
+  update_using( \
+    add_tabs_before_every_description_line, \
+    add_tabs_before_every_photo_description_line, \
+    add_links_to_photo_descriptions, \
+    remove_final_empty_line_from_photo_descriptions)
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read
