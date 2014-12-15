@@ -18,10 +18,10 @@ class ViewableGallery
     binding()
   end
 
-  def update_using(*args)
+  def update_using(*update_functions)
     updated_gallery = MutableViewableGallery.new(self)
 
-    args.each do |update_function|
+    update_functions.each do |update_function|
       updated_gallery = update_function.call(updated_gallery)
     end
 
