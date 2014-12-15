@@ -19,26 +19,25 @@ add_tabs_before_every_description_line = lambda do |mutable_viewable_gallery|
   return mutable_viewable_gallery
 end
 
-add_tabs_before_every_photo_description_line = lambda do |mutable_viewable_gallery|
-  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
-    mutable_viewable_photo.description = add_tabs_before_every_line(mutable_viewable_photo.description, 3)
-  end
-  return mutable_viewable_gallery
+add_tabs_before_every_photo_description_line = lambda do |mutable_viewable_photo|
+  mutable_viewable_photo.description = add_tabs_before_every_line(mutable_viewable_photo.description, 3)
 end
 
-add_links_to_photo_descriptions = lambda do |mutable_viewable_gallery|
-  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
-    mutable_viewable_photo.description = add_links_to_sources(mutable_viewable_photo.description)
-  end
-  return mutable_viewable_gallery
+add_links_to_photo_descriptions = lambda do |mutable_viewable_photo|
+  mutable_viewable_photo.description = add_links_to_sources(mutable_viewable_photo.description)
 end
 
-remove_final_empty_line_from_photo_descriptions = lambda do |mutable_viewable_gallery|
-  mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
-    mutable_viewable_photo.description = remove_final_empty_line(mutable_viewable_photo.description)
-  end
-  return mutable_viewable_gallery
+remove_final_empty_line_from_photo_descriptions = lambda do |mutable_viewable_photo|
+  mutable_viewable_photo.description = remove_final_empty_line(mutable_viewable_photo.description)
+end
 
+def for_each_photo(&update_function)
+  return lambda do |mutable_viewable_gallery|
+    mutable_viewable_gallery.photos.each do |mutable_viewable_photo|
+      update_function.call(mutable_viewable_photo)
+    end
+    return mutable_viewable_gallery
+  end
 end
 
 def add_links_to_sources(multi_line_string)
@@ -57,9 +56,9 @@ gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, 
   gallery_config.year, viewable_photos).
   update_using( \
     add_tabs_before_every_description_line, \
-    add_tabs_before_every_photo_description_line, \
-    add_links_to_photo_descriptions, \
-    remove_final_empty_line_from_photo_descriptions)
+    for_each_photo(&add_tabs_before_every_photo_description_line), \
+    for_each_photo(&add_links_to_photo_descriptions), \
+    for_each_photo(&remove_final_empty_line_from_photo_descriptions))
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("template.erb", 'r').read
