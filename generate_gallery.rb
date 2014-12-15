@@ -2,8 +2,6 @@ require 'erb'
 require_relative 'viewable_gallery'
 require_relative 'viewable_photo'
 require_relative 'gallery_config'
-require_relative 'console_utils'
-require_relative 'string_utils'
 require_relative 'photos_utils'
 require_relative 'gallery_mutators'
 
