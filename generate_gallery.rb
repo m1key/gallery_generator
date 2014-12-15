@@ -14,14 +14,9 @@ puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
 
-add_tabs_before_every_description_line = lambda do |mutable_viewable_content|
-  mutable_viewable_content.description = add_tabs_before_every_line(mutable_viewable_content.description, 2)
-  return mutable_viewable_content
-end
-
-def add_tabs_before_every_description_line(tabs_count)
+def add_tabs_before_every_description_line(how_many_tabs)
   return lambda do |mutable_viewable_content|
-    mutable_viewable_content.description = add_tabs_before_every_line(mutable_viewable_content.description, tabs_count)
+    mutable_viewable_content.description = add_tabs_before_every_line(mutable_viewable_content.description, how_many_tabs)
     return mutable_viewable_content
   end
 end
