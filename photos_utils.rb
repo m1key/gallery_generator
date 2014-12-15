@@ -1,3 +1,5 @@
+require 'exifr'
+require 'fileutils'
 require_relative 'viewable_photo_metadata'
 
 def photos_config_into_viewable_photos(gallery_config)

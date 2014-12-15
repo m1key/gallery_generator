@@ -1,3 +1,5 @@
+require 'date'
+require 'yaml'
 require_relative 'console_utils'
 
 class GalleryConfig

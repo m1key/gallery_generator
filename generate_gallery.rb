@@ -1,8 +1,4 @@
-require 'date'
 require 'erb'
-require 'yaml'
-require 'exifr'
-require 'fileutils'
 require_relative 'viewable_gallery'
 require_relative 'viewable_photo'
 require_relative 'gallery_config'
