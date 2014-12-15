@@ -58,12 +58,3 @@ def create_gallery_image(original_file_name, gallery_slug, photo_id)
   FileUtils.cp(original_file_name, gallery_slug + "_" + photo_id + File.extname(original_file_name))
 end
 
-def add_links_to_sources(multi_line_string)
-  result = ""
-  multi_line_string.each_line do |line|
-    line_with_empty_line_removed =  line.gsub(/\[(\d)\]/, '[<a href="#sources">\1</a>]')
-    result += line_with_empty_line_removed
-  end
-  return result
-end
-
