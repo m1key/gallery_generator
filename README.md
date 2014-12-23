@@ -20,4 +20,5 @@ and the photos themselves in the format DSC_1234.jpg.
 
 Before running, install the necessary gems:
 > gem install exifr
+> gem install minitest
 
