@@ -21,4 +21,10 @@ and the photos themselves in the format DSC_1234.jpg.
 Before running, install the necessary gems:
 > gem install exifr
 > gem install minitest
+> gem install rspec
+
+## Tests
+
+To run the rspec test:
+> rspec viewable_gallery_spec.rb
 

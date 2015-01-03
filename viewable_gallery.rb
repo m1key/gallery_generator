@@ -3,7 +3,7 @@ require_relative 'string_utils'
 class ViewableGallery
   attr_reader :title, :description, :slug, :sources, :upload_date, :map_url, :map_title, :year, :photos
   def initialize(title, description, slug, sources, upload_date, map_url, map_title, year, viewable_photos)
-    @title = title
+    @title = String.new(title)
     @description = description
     @slug = slug
     @sources = sources
