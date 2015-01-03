@@ -12,7 +12,7 @@ class ViewablePhotoTest < Minitest::Test
     viewable_photo = ViewablePhoto.new(photo_id, photo_title, photo_description, photo_metadata)
     mutable_viewable_photo = MutableViewablePhoto.new(viewable_photo)
     
-    assert_equal photo_id, mutable_viewable_photo.id, 'photo_id was not copies from viewable to mutable viewable photo'
+    assert_equal photo_id, mutable_viewable_photo.id, 'photo_id was not copied from viewable to mutable viewable photo'
   end
 
 end
