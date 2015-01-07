@@ -25,6 +25,6 @@ Before running, install the necessary gems:
 
 ## Tests
 
-To run the rspec test:
-> rspec viewable_gallery_spec.rb
+To run the rspec tests:
+> rspec spec 
 

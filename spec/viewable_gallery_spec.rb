@@ -1,5 +1,5 @@
-require_relative 'viewable_gallery'
-require_relative 'gallery_mutators'
+require 'viewable_gallery'
+require 'gallery_mutators'
 
 
 describe ViewableGallery do

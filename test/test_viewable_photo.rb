@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'viewable_photo.rb'
+require 'viewable_photo.rb'
 
 class ViewablePhotoTest < Minitest::Test
 
