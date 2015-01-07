@@ -1,9 +1,9 @@
 require 'erb'
-require_relative 'viewable_gallery'
-require_relative 'viewable_photo'
-require_relative 'gallery_config'
-require_relative 'photos_utils'
-require_relative 'gallery_mutators'
+require_relative 'gallery_generator/viewable_gallery'
+require_relative 'gallery_generator/viewable_photo'
+require_relative 'gallery_generator/gallery_config'
+require_relative 'gallery_generator/photos_utils'
+require_relative 'gallery_generator/gallery_mutators'
 
 OUTPUT_FILE = "index.html"
 GALLERY_CONFIG_FILE = "gallery.yaml"
@@ -27,7 +27,7 @@ gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, 
     for_each_photo(&@remove_final_empty_line_from_description))
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
-template_file = File.open("template.erb", 'r').read
+template_file = File.open("gallery_generator/template.erb", 'r').read
 erb = ERB.new(template_file, nil, '-')
 File.open("index.html", 'w+') { |file| file.write(erb.result(gallery.get_binding)) }
 

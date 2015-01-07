@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'viewable_photo.rb'
+require 'gallery_generator/viewable_photo.rb'
 
 class ViewablePhotoTest < Minitest::Test
 
