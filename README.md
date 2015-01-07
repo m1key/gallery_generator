@@ -25,6 +25,9 @@ Before running, install the necessary gems:
 
 ## Tests
 
+To run the Minitest tests:
+> rake
+
 To run the rspec tests:
 > rspec spec 
 
