@@ -13,7 +13,7 @@ This is work in progress.
 
 ## Example usage
 
-ruby gallery_generator.rb
+gem build gallery_generator.gemspec
 
 This assumes there is a valid gallery.yaml file present in the current folder,
 and the photos themselves in the format DSC_1234.jpg.
@@ -33,6 +33,7 @@ To run the Minitest tests:
 To run the rspec tests:
 > rspec spec 
 
-To run the script with sample photos in the directory:
-> ruby -Ilib bin/gallery_generator
+## Gem
 
+To build gem:
+> gem build gallery_generator.gemspec
