@@ -13,7 +13,7 @@ This is work in progress.
 
 ## Example usage
 
-ruby generate_gallery.rb
+ruby gallery_generator.rb
 
 This assumes there is a valid gallery.yaml file present in the current folder,
 and the photos themselves in the format DSC_1234.jpg.
