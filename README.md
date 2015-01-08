@@ -20,7 +20,9 @@ and the photos themselves in the format DSC_1234.jpg.
 
 Before running, install the necessary gems:
 > gem install exifr
+
 > gem install minitest
+
 > gem install rspec
 
 ## Tests
@@ -30,4 +32,7 @@ To run the Minitest tests:
 
 To run the rspec tests:
 > rspec spec 
+
+To run the script with sample photos in the directory:
+> ruby -Ilib bin/gallery_generator
 
