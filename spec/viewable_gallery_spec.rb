@@ -1,5 +1,5 @@
-require 'gallery_generator/viewable_gallery'
-require 'gallery_generator/gallery_mutators'
+require 'gallery_generator'
+require 'gallery_generator'
 
 
 describe ViewableGallery do
