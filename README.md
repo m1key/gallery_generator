@@ -13,7 +13,7 @@ This is work in progress.
 
 ## Example usage
 
-gem build gallery_generator.gemspec
+> ruby -Ilib bin/gallery_generator
 
 This assumes there is a valid gallery.yaml file present in the current folder,
 and the photos themselves in the format DSC_1234.jpg.
