@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require 'gallery_generator'
 
+include GalleryGenerator
+
 class ViewablePhotoTest < Minitest::Test
 
   def test_mutable_viewable_photo_has_properties_from_given_viewable_photo

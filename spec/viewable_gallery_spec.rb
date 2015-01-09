@@ -1,6 +1,7 @@
 require 'gallery_generator'
 require 'gallery_generator'
 
+include GalleryGenerator
 
 describe ViewableGallery do
   before do    

@@ -3,6 +3,8 @@
 require 'erb'
 require 'gallery_generator'
 
+include GalleryGenerator
+
 OUTPUT_FILE = "index.html"
 DEFAULT_GALLERY_CONFIG_FILE = "gallery.yaml"
 
