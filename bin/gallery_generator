@@ -30,11 +30,11 @@ gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, 
   gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
   gallery_config.year, viewable_photos).
   update_using( \
-    add_tabs_before_every_description_line(2), \
-    @add_links_to_descriptions, \
-    for_each_photo(&add_tabs_before_every_description_line(3)), \
-    for_each_photo(&@add_links_to_descriptions), \
-    for_each_photo(&@remove_final_empty_line_from_description))
+    GalleryGenerator.add_tabs_before_every_description_line(2), \
+    GalleryGenerator.add_links_to_descriptions, \
+    GalleryGenerator.for_each_photo(&GalleryGenerator.add_tabs_before_every_description_line(3)), \
+    GalleryGenerator.for_each_photo(&GalleryGenerator.add_links_to_descriptions), \
+    GalleryGenerator.for_each_photo(&GalleryGenerator.remove_final_empty_line_from_description))
 
 puts "Writing gallery file #{OUTPUT_FILE}..."
 template_file = File.open("#{File.dirname(File.expand_path($0))}/../lib/gallery_generator/template.erb", 'r').read
