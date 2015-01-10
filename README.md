@@ -37,3 +37,12 @@ To run the rspec tests:
 
 To build gem:
 > gem build gallery_generator.gemspec
+
+To install gem:
+> gem install gallery_generator-0.0.2.gem
+
+To test gem:
+> irb
+
+> require 'gallery_generator'
+
