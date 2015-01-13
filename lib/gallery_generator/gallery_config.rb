@@ -50,7 +50,7 @@ module GalleryGenerator
     end
 
     def photo_id_digits
-      Math::log10(total_photos_number) + 1
+      Math::log10(total_photos_number)
     end
   end
 end
