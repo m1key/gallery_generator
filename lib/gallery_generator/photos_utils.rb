@@ -4,7 +4,7 @@ require_relative 'viewable_photo_metadata'
 
 module GalleryGenerator
 
-  def photos_config_into_viewable_photos(gallery_config)
+  def photos_config_into_viewable_photos(working_directory, gallery_config)
     photos = []
     current_photo_number = 0
     total_photos_number = gallery_config.total_photos_number
@@ -16,12 +16,12 @@ module GalleryGenerator
       photo_title = photo["title"]
       photo_description = photo["description"]
       photo_file_name_contains = photo["fileNameContains"]
-      photo_metadata = get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
+      photo_metadata = get_metadata_for_image_with_file_name_containing(working_directory, photo_file_name_contains)
 
       puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{compact(photo["description"])}]..."
       photos.push ViewablePhoto.new(photo_id, photo_title, photo_description, photo_metadata)
 
-      create_gallery_image(photo_metadata.original_file_name, gallery_config.slug, photo_id)
+      create_gallery_image(photo_metadata.original_file_name, gallery_config.slug, photo_id, working_directory)
     end
     return photos
   end
@@ -34,9 +34,9 @@ module GalleryGenerator
     return photo_id
   end
 
-  def get_metadata_for_image_with_file_name_containing(photo_file_name_contains)
+  def get_metadata_for_image_with_file_name_containing(working_directory, photo_file_name_contains)
     selected_file_name = ""
-    Dir.entries(".").each do |file_name|
+    Dir.entries(working_directory).each do |file_name|
       if file_name.include? photo_file_name_contains.to_s
         unless selected_file_name == ""
           puts "WARN  More than one file name matches [#{photo_file_name_contains}]. Will use the last one that matches."
@@ -49,7 +49,7 @@ module GalleryGenerator
       return
     end
  
-    exif = EXIFR::JPEG.new(selected_file_name)
+    exif = EXIFR::JPEG.new(File.join(working_directory, selected_file_name))
     photo_height = exif.height
     photo_iso = exif.iso_speed_ratings
     photo_focal_length = exif.focal_length.to_f.round.to_s
@@ -58,7 +58,7 @@ module GalleryGenerator
     return ViewablePhotoMetadata.new(selected_file_name, photo_height, photo_iso, photo_focal_length, photo_f_number, photo_exposure_time)
   end
 
-  def create_gallery_image(original_file_name, gallery_slug, photo_id)
-    FileUtils.cp(original_file_name, gallery_slug + "_" + photo_id + File.extname(original_file_name))
+  def create_gallery_image(original_file_name, gallery_slug, photo_id, working_directory)
+    FileUtils.cp(File.join(working_directory, original_file_name), File.join(working_directory, gallery_slug + "_" + photo_id + File.extname(original_file_name)))
   end
 end
