@@ -23,11 +23,11 @@ photos:
           description: |
                 This is the first [1] photo I took in Tashkent. [2]
                 Tashkent is amazing. [2]
-          fileNameContains: 5122
+          fileNameContains: "5122"
         - title: Night out in Bukhara
           description: Photo taken at night in Bukhara. [3]
-          fileNameContains: 1234
+          fileNameContains: "0041"
         - title: Samarkand
           description: Samarkand [1] is amazing!
-          fileNameContains: 8989
+          fileNameContains: "8989"
 

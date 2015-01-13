@@ -45,7 +45,7 @@ module GalleryGenerator
       end
     end
     if selected_file_name == ""
-      puts "WARN  No matching photo found for #{photo_file_name_contains}."
+      raise "ERROR  No matching photo found for #{photo_file_name_contains}."
       return
     end
  
