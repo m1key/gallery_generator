@@ -17,6 +17,13 @@ sources:
         - https://en.wikipedia.org/wiki/Uzbekistan
         - https://en.wikipedia.org/wiki/Tashkent
         - https://en.wikipedia.org/wiki/Samarkand
+        - http://rspec.info/
+        - http://www.m1key.me
+        - http://www.google.com
+        - http://zodiaclung.com
+        - http://en.wikipedia.org/wiki/Monster_Magnet
+        - http://en.wikipedia.org/wiki/Dave_Wyndorf
+        - http://www.toolband.com/
 
 photos:
         - title: Welcome to Tashkent!
@@ -28,6 +35,6 @@ photos:
           description: Photo taken at night in Bukhara. [3]
           fileNameContains: "0041"
         - title: Samarkand
-          description: Samarkand [1] is amazing!
+          description: Samarkand [1] is amazing! [10]
           fileNameContains: "8989"
 

@@ -33,7 +33,7 @@ module GalleryGenerator
   def add_links_to_sources(multi_line_string)
     result = ""
     multi_line_string.each_line do |line|
-      line_with_source_link_added =  line.gsub(/\[(\d)\]/, '[<a href="#sources">\1</a>]')
+      line_with_source_link_added =  line.gsub(/\[(\d+)\]/, '[<a href="#sources">\1</a>]')
       result += line_with_source_link_added
     end
     return result
