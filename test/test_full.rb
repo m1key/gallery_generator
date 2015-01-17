@@ -9,7 +9,7 @@ class FullTest < Minitest::Test
     output_file = File.join(working_directory, "index.html")
     expected_output_file = File.join(working_directory, "expected_output.html")
     if File.exists?(output_file) then FileUtils.rm(output_file) end
-    `ruby -Ilib #{bin_script} #{working_directory}`
+    puts `ruby -Ilib #{bin_script} #{working_directory}`
     files_are_equal = FileUtils.compare_file(output_file, expected_output_file)
     unless files_are_equal then
       puts "Handy comparison command: diff test/data/index.html test/data/expected_output.html"

@@ -26,6 +26,8 @@ puts
 gallery_config = GalleryConfig.new(File.join(working_directory, DEFAULT_GALLERY_CONFIG_FILE))
 viewable_photos = photos_config_into_viewable_photos(working_directory, gallery_config)
 
+puts "Creating viewable gallery..."
+
 gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, gallery_config.slug, \
   gallery_config.sources, gallery_config.upload_date, gallery_config.map_url, gallery_config.map_title, \
   gallery_config.year, viewable_photos).
@@ -35,6 +37,8 @@ gallery = ViewableGallery.new(gallery_config.title, gallery_config.description, 
     for_each_photo(&add_tabs_before_every_description_line(3)), \
     for_each_photo(&add_links_to_descriptions), \
     for_each_photo(&remove_final_empty_line_from_description))
+
+puts "Preparing to write the output..."
 
 output_file = File.join(working_directory, OUTPUT_FILE)
 puts "Writing gallery file #{output_file}..."

@@ -16,10 +16,11 @@ module GalleryGenerator
       photo_title = photo["title"]
       photo_description = photo["description"]
       photo_file_name_contains = photo["fileNameContains"]
+      photo_technical_info = photo["technicalInfo"]
       photo_metadata = get_metadata_for_image_with_file_name_containing(working_directory, photo_file_name_contains)
 
       puts "Adding photo with ID [#{photo_id}], title [#{photo_title}], height [#{photo_metadata.height}], description [#{compact(photo["description"])}]..."
-      photos.push ViewablePhoto.new(photo_id, photo_title, photo_description, photo_metadata)
+      photos.push ViewablePhoto.new(photo_id, photo_title, photo_description, photo_metadata, photo_technical_info)
 
       create_gallery_image(photo_metadata.original_file_name, gallery_config.slug, photo_id, working_directory)
     end

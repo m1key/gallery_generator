@@ -33,7 +33,7 @@ module GalleryGenerator
 
     def to_viewable_photos(mutable_viewable_photos)
       return mutable_viewable_photos.map do |mutable_viewable_photo|
-        ViewablePhoto.new(mutable_viewable_photo.id, mutable_viewable_photo.title, mutable_viewable_photo.description, mutable_viewable_photo.metadata)
+        ViewablePhoto.new(mutable_viewable_photo.id, mutable_viewable_photo.title, mutable_viewable_photo.description, mutable_viewable_photo.metadata, mutable_viewable_photo.technical_info)
       end
     end
 
