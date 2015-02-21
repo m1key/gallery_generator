@@ -8,13 +8,13 @@ include GalleryGenerator
 OUTPUT_FILE = "index.html"
 DEFAULT_GALLERY_CONFIG_FILE = "gallery.yaml"
 
-puts "Gallery Generator"
+puts "Gallery Generator 0.0.6"
 puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
 
 if ARGV.size == 0
-  working_directory =File.expand_path File.dirname(__FILE__) 
+  working_directory = Dir.pwd 
   puts "Working directory not specified. Using [#{working_directory}]."
 else
   working_directory = ARGV[0]

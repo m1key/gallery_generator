@@ -43,7 +43,7 @@ To build gem:
 > gem build gallery_generator.gemspec
 
 To install gem:
-> gem install gallery_generator-0.0.5.gem
+> gem install gallery_generator-0.0.6.gem
 
 To test gem:
 > irb
