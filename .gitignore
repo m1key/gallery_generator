@@ -10,6 +10,8 @@ uzbekistan*
 /test/tmp/
 /test/version_tmp/
 /tmp/
+.idea
+*.iml
 
 ## Specific to RubyMotion:
 .dat*
