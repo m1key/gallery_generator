@@ -39,4 +39,7 @@ photos:
         - title: Samarkand
           description: Samarkand [1] is amazing! [10]
           fileNameContains: "8989"
+        - title: Iceland
+          description: What's Iceland doing here?
+          fileNameContains: "3302"
 
