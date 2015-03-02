@@ -8,7 +8,7 @@ include GalleryGenerator
 OUTPUT_FILE = "index.html"
 DEFAULT_GALLERY_CONFIG_FILE = "gallery.yaml"
 
-puts "Gallery Generator 0.0.6"
+puts "Gallery Generator 0.0.7"
 puts "www.m1key.me"
 puts "This generates a m1key.me style gallery HTML code."
 puts
